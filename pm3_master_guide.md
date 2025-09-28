@@ -1,5 +1,12 @@
 # Proxmark3 Master Guide - AI Automation & Card Operations
 
+> **🆕 NOVÉ SKRIPTY DOSTUPNÉ!** Pro rychlé spuštění použijte:
+> - `./scripts/quick_analyze.sh` - Rychlá analýza
+> - `python3 scripts/ai_analyzer.py` - AI-asistovaná analýza
+> - `python3 scripts/interactive_analyzer.py` - Interaktivní menu
+>
+> **📖 Kompletní návod:** [quick_start_guide.md](quick_start_guide.md)
+
 ## Table of Contents
 1. [Hardware Setup & Verification](#hardware-setup--verification)
 2. [Card Detection & Analysis](#card-detection--analysis)

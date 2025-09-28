@@ -13,11 +13,18 @@ Tento projekt poskytuje strukturovaný přístup k analýze RFID/NFC karet s dů
 ## 🗂️ Struktura Projektu
 
 ```
-PM3/
+PM3analysis/
+├── 📄 README.md                    # Tento soubor - přehled projektu
+├── 📄 quick_start_guide.md         # 🆕 Kompletní návod pro spuštění
 ├── 📄 pm3_master_guide.md          # Hlavní návod pro AI a automatizaci
 ├── 📄 advanced_attacks.md          # Pokročilé techniky útoků
 ├── 📄 magic_cards_db.md           # Databáze magic karet
 ├── 📄 legal_guidelines.md         # Právní a etické pokyny
+├── 📄 LICENSE                     # MIT licence s bezpečnostními upozorněními
+├── 📁 scripts/                    # 🆕 Spustitelné skripty
+│   ├── 🐍 ai_analyzer.py          # AI-asistovaná analýza
+│   ├── 🐍 interactive_analyzer.py # Interaktivní menu
+│   └── 📜 quick_analyze.sh        # Rychlá bash analýza
 ├── 📁 carddata/                   # Existující data karet
 ├── 📁 dictionaries/               # Slovníky klíčů a hesel
 │   ├── 📄 README.md
@@ -29,7 +36,31 @@ PM3/
 
 ## 🚀 Rychlý Start
 
-### 1. Základní Analýza Karty
+### 1. Nejrychlejší Spuštění (30 sekund)
+```bash
+# Automatická analýza s AI asistencí
+./scripts/quick_analyze.sh
+
+# Nebo s parametry
+./scripts/quick_analyze.sh -v --timeout 30
+```
+
+### 2. AI-Asistovaná Analýza (doporučeno)
+```bash
+# Inteligentní analýza s rozhodováním
+python3 scripts/ai_analyzer.py -v
+
+# Pouze detekce bez útoků
+python3 scripts/ai_analyzer.py --detect-only
+```
+
+### 3. Interaktivní Menu
+```bash
+# Menu-driven rozhraní pro všechny funkce
+python3 scripts/interactive_analyzer.py
+```
+
+### 4. Manuální PM3 Příkazy
 ```bash
 # Automatická detekce
 pm3 -c "auto"
@@ -65,6 +96,13 @@ pm3 -c "hf mfu restore original_dump.json"
 
 ## 📖 Dokumentace
 
+### 🆕 Nové Návody (Start Here!)
+
+| Dokument | Popis | Použití |
+|----------|-------|---------|
+| [quick_start_guide.md](quick_start_guide.md) | **🚀 Rychlý start** - Jak spustit analýzu | První kroky, praktické příklady |
+| [scripts/](scripts/) | **Spustitelné skripty** - Připravené nástroje | Okamžité použití |
+
 ### Hlavní Dokumenty
 
 | Dokument | Popis | Použití |
@@ -73,6 +111,14 @@ pm3 -c "hf mfu restore original_dump.json"
 | [advanced_attacks.md](advanced_attacks.md) | Pokročilé techniky útoků | Specializované útoky |
 | [magic_cards_db.md](magic_cards_db.md) | Databáze magic karet | Identifikace a práce s magic kartami |
 | [legal_guidelines.md](legal_guidelines.md) | Právní a etické pokyny | Bezpečné a legální testování |
+
+### 🛠️ Spustitelné Skripty
+
+| Skript | Popis | Použití |
+|--------|-------|---------|
+| [scripts/quick_analyze.sh](scripts/quick_analyze.sh) | Rychlá bash analýza | `./scripts/quick_analyze.sh -v` |
+| [scripts/ai_analyzer.py](scripts/ai_analyzer.py) | AI-asistovaná analýza | `python3 scripts/ai_analyzer.py -v` |
+| [scripts/interactive_analyzer.py](scripts/interactive_analyzer.py) | Interaktivní menu | `python3 scripts/interactive_analyzer.py` |
 
 ### Specializované Sekce
 
@@ -223,6 +269,65 @@ Příklady:
 - [Proxmark3 Forum](https://forum.proxmark.org/)
 - [RFID Research Group](https://github.com/RfidResearchGroup)
 - [Dangerous Things Forum](https://forum.dangerousthings.com/)
+
+## 🎯 Praktické Workflow Příklady
+
+### Scénář 1: Neznámá Karta
+```bash
+# Rychlá detekce a analýza
+./scripts/quick_analyze.sh -v
+
+# Nebo AI asistovaná
+python3 scripts/ai_analyzer.py --detect-only
+```
+
+### Scénář 2: MIFARE Classic Analýza
+```bash
+# Specializovaná analýza s AI rozhodováním
+python3 scripts/ai_analyzer.py --card-type mifare_classic -v
+
+# Výstup: Automaticky vybere optimální útoky (Darkside/Hardnested)
+```
+
+### Scénář 3: Magic Card Operace
+```bash
+# Test magic schopností
+python3 scripts/ai_analyzer.py --magic-only -v
+
+# Interaktivní magic operace
+python3 scripts/interactive_analyzer.py
+# → Vyberte možnost 3 (Magic Card Operations)
+```
+
+### Scénář 4: Kompletní Klonování
+```bash
+# Interaktivní klonování workflow
+python3 scripts/interactive_analyzer.py
+# → Vyberte možnost 4 (Cloning Workflow)
+
+# Kroky:
+# 1. Umístěte source kartu → analýza
+# 2. Umístěte target magic kartu → detekce
+# 3. Automatické klonování
+# 4. Verifikace
+```
+
+### Scénář 5: Batch Processing
+```bash
+# Zpracování více karet najednou
+python3 scripts/interactive_analyzer.py
+# → Vyberte možnost 5 (Batch Processing)
+
+# Nebo přímo:
+./scripts/quick_analyze.sh -o batch_results/card_001
+./scripts/quick_analyze.sh -o batch_results/card_002
+```
+
+### VS Code Integrace
+```bash
+# Spuštění z VS Code Command Palette
+# Cmd+Shift+P → "Tasks: Run Task" → "PM3 Quick Analysis"
+```
 
 ## 🔧 Troubleshooting
 

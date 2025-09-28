@@ -1,0 +1,119 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "PM3 Quick Analysis",
+            "type": "shell",
+            "command": "./scripts/quick_analyze.sh",
+            "args": ["-v"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Rychlá analýza RFID/NFC karty s verbose výstupem"
+        },
+        {
+            "label": "PM3 AI Analysis",
+            "type": "shell",
+            "command": "python3",
+            "args": ["scripts/ai_analyzer.py", "-v"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "AI-asistovaná analýza s inteligentním rozhodováním"
+        },
+        {
+            "label": "PM3 Interactive Menu",
+            "type": "shell",
+            "command": "python3",
+            "args": ["scripts/interactive_analyzer.py"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": [],
+            "detail": "Interaktivní menu pro všechny PM3 operace"
+        },
+        {
+            "label": "PM3 Magic Card Test",
+            "type": "shell",
+            "command": "python3",
+            "args": ["scripts/ai_analyzer.py", "--magic-only", "-v"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Test pouze magic card schopností"
+        },
+        {
+            "label": "PM3 Detection Only",
+            "type": "shell",
+            "command": "python3",
+            "args": ["scripts/ai_analyzer.py", "--detect-only", "-v"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Pouze detekce karty bez útoků"
+        },
+        {
+            "label": "PM3 Hardware Check",
+            "type": "shell",
+            "command": "pm3",
+            "args": ["-c", "hw status; hw tune"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Kontrola PM3 hardware a antény"
+        },
+        {
+            "label": "PM3 Auto Detect",
+            "type": "shell",
+            "command": "pm3",
+            "args": ["-c", "auto"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": [],
+            "detail": "Rychlá automatická detekce karty"
+        }
+    ]
+}
