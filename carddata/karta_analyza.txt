@@ -1,0 +1,88 @@
+ANALÝZA MIFARE ULTRALIGHT KARTY
+================================
+
+Datum analýzy: 28.09.2025
+Analyzováno pomocí: Proxmark3
+
+ZÁKLADNÍ INFORMACE
+==================
+UID: 04 EC A1 6A 7B 13 90 (7 bytů, double)
+Typ: MIFARE Ultralight EV1 48bytes (MF0UL1101)
+Výrobce: NXP Semiconductors Germany
+Protokol: ISO14443-3 Compliant
+
+TECHNICKÉ SPECIFIKACE
+=====================
+Kapacita: 48 bytů (64-32 bytů)
+Velikost stránky: 4 byty
+Počet bloků: 20 (0x00-0x13)
+Datové bloky: 4-15 (12 bloků = 48 bytů)
+
+STRUKTURA PAMĚTI
+================
+Blok 0-1: UID (04 EC A1 C1 6A 7B 13 90)
+Blok 2: BCC1 + Internal (92 00 00 00)
+Blok 3: OTP (One Time Programmable) - prázdný
+Bloky 4-15: Uživatelská data - všechny prázdné (00 00 00 00)
+Blok 16: Konfigurace 0 (04 00 00 FF)
+Blok 17: Konfigurace 1 (00 05 00 00)
+Blok 18: Heslo (PWD) - nečitelné
+Blok 19: PACK + RFU - nečitelné
+
+KONFIGURACE KARTY
+=================
+- Silný modulační režim: POVOLEN
+- Autentifikace stránek: NEPOTŘEBNÁ
+- Pokusy o heslo: NEOMEZENÉ
+- NFC počítadlo: VYPNUTO
+- Ochrana NFC počítadla: NE
+- Uživatelská konfigurace: ZAPISOVATELNÁ
+- Přístup pro zápis: CHRÁNĚN HESLEM
+- Virtual Card Type ID: 05 (výchozí)
+
+BEZPEČNOSTNÍ FUNKCE
+===================
+Heslo (PWD): Nastaveno, ale nečitelné
+PACK: Nečitelný
+Podpis IC: A7C2E8486EC62D5AA4B731B8FF221EDB6549BB04451C3EAAB281F6CC0C5DB1AB
+Ověření podpisu: SELHALO
+
+SILICON INFORMACE
+=================
+Wafer Counter: 19033965 (0x1226F6D)
+Wafer Coordinates: x=236, y=161 (0xEC, 0xA1)
+Test Site: 2
+
+POČÍTADLA A TEARING
+===================
+Počítadlo 0: 00 00 00 (BD tearing - OK)
+Počítadlo 1: 00 00 00 (BD tearing - OK)
+Počítadlo 2: 00 00 00 (BD tearing - OK)
+
+STAV KARTY
+==========
+- Karta je PRÁZDNÁ (všechna uživatelská data jsou 00)
+- Připravena k programování
+- Žádné zámky na datových blocích
+- Výchozí konfigurace
+
+DUMP SOUBORY
+============
+- hf-mfu-04ECA16A7B1390-dump.bin (binární dump)
+- hf-mfu-04ECA16A7B1390-dump.json (JSON formát)
+- mifare_ultralight_dump.txt.bin (binární dump)
+- mifare_ultralight_dump.txt.json (JSON formát)
+
+MOŽNÉ POUŽITÍ
+=============
+- Přístupová karta
+- Identifikační tag
+- Datové úložiště (48 bytů)
+- NFC aplikace
+
+POZNÁMKY
+========
+- Karta je v továrním stavu
+- Všechna uživatelská data jsou prázdná
+- Konfigurace je výchozí
+- Připravena k programování vlastních dat

@@ -1,0 +1,141 @@
+# PM3 Pentests - Git Ignore File
+
+# Sensitive data - NEVER commit real card dumps or keys
+*.bin
+*.dump
+*.key
+*.keys
+*_dump.*
+*_keys.*
+real_card_*
+live_card_*
+client_*
+target_*
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# Logs and traces
+*.log
+*.trace
+debug_*.txt
+analysis_*.txt
+test_results_*.txt
+session_*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDE files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# PM3 specific
+pm3_output_*.txt
+hardware_check_*.log
+batch_results_*/
+analysis_report_*/
+verification_dump.*
+clone_verification.*
+
+# Personal/Client data
+personal_cards/
+client_data/
+confidential/
+private/
+
+# Test data (keep example data, exclude real data)
+!example_*.bin
+!sample_*.dump
+!demo_*.key
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Documentation builds
+docs/_build/
+site/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json

@@ -1,0 +1,77 @@
+MIFARE ULTRALIGHT DUMP S HESLEM
+===============================
+
+Datum: 28.09.2025
+Karta: MIFARE Ultralight EV1 48bytes
+UID: 04 EC A1 6A 7B 13 90
+Použité heslo: FFFFFFFF
+
+ROZDÍL MEZI DUMPEM BEZ A S HESLEM
+=================================
+
+BEZ HESLA:
+Blok 18 (PWD): 00 00 00 00 (nečitelné)
+Blok 19 (PACK): 00 00 00 00 (nečitelné)
+
+S HESLEM FFFFFFFF:
+Blok 18 (PWD): FF FF FF FF (skutečné heslo)
+Blok 19 (PACK): 00 00 00 00 (PACK hodnota)
+
+KOMPLETNÍ DUMP S HESLEM
+=======================
+
+Block 00: 04 EC A1 C1  (UID část 1)
+Block 01: 6A 7B 13 90  (UID část 2)
+Block 02: 92 00 00 00  (BCC1 + Internal)
+Block 03: 00 00 00 00  (OTP - One Time Programmable)
+Block 04: 00 00 00 00  (Uživatelská data)
+Block 05: 00 00 00 00  (Uživatelská data)
+Block 06: 00 00 00 00  (Uživatelská data)
+Block 07: 00 00 00 00  (Uživatelská data)
+Block 08: 00 00 00 00  (Uživatelská data)
+Block 09: 00 00 00 00  (Uživatelská data)
+Block 10: 00 00 00 00  (Uživatelská data)
+Block 11: 00 00 00 00  (Uživatelská data)
+Block 12: 00 00 00 00  (Uživatelská data)
+Block 13: 00 00 00 00  (Uživatelská data)
+Block 14: 00 00 00 00  (Uživatelská data)
+Block 15: 00 00 00 00  (Uživatelská data)
+Block 16: 04 00 00 FF  (Konfigurace 0)
+Block 17: 00 05 00 00  (Konfigurace 1)
+Block 18: FF FF FF FF  (PWD - Heslo)
+Block 19: 00 00 00 00  (PACK + RFU)
+
+ANALÝZA HESLA
+=============
+
+Nalezené heslo: FFFFFFFF
+- Toto je výchozí/tovární heslo pro mnoho MIFARE Ultralight karet
+- PACK (odpověď na autentifikaci): 0000
+- Heslo umožňuje přístup k chráněným oblastem karty
+
+BEZPEČNOSTNÍ POZNÁMKY
+====================
+
+1. Heslo FFFFFFFF je velmi slabé a snadno uhodnutelné
+2. Doporučuje se změnit na silnější heslo pro produkční použití
+3. Karta je v továrním stavu s výchozím heslem
+
+SOUBORY
+=======
+
+- mifare_ultralight_with_password.bin (binární dump)
+- mifare_ultralight_with_password.json (JSON formát)
+
+PŘÍKAZY POUŽITÉ
+===============
+
+pm3
+hf mfu dump -k FFFFFFFF -f mifare_ultralight_with_password
+
+POZNÁMKY
+========
+
+- Dump s heslem odhalil skutečnou hodnotu PWD bloku
+- Všechna uživatelská data (bloky 4-15) jsou stále prázdná
+- Karta je připravena k programování vlastních dat
+- Heslo je potřeba pro zápis do chráněných oblastí
