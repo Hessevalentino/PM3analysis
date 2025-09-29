@@ -223,7 +223,7 @@ analyze_mifare_ultralight() {
     # Try dump without password
     log_info "Attempting dump without password..."
     if pm3 -c "hf mfu dump" > "$OUTPUT_DIR/dump_no_pwd.log" 2>&1; then
-        if grep -q "dump completed" "$OUTPUT_DIR/dump_no_pwd.log"; then
+        if grep -q -E "(MFU dump file information|Reading tag memory|block#|Version\.\.\.\.\.)" "$OUTPUT_DIR/dump_no_pwd.log"; then
             log_success "Dump successful without password!"
             return 0
         fi
@@ -236,7 +236,7 @@ analyze_mifare_ultralight() {
     for pwd in "${common_passwords[@]}"; do
         log_info "Trying password: $pwd"
         if pm3 -c "hf mfu dump -k $pwd" > "$OUTPUT_DIR/dump_$pwd.log" 2>&1; then
-            if grep -q "dump completed" "$OUTPUT_DIR/dump_$pwd.log"; then
+            if grep -q -E "(MFU dump file information|Reading tag memory|block#|Version\.\.\.\.\.)" "$OUTPUT_DIR/dump_$pwd.log"; then
                 log_success "Dump successful with password: $pwd"
                 return 0
             fi

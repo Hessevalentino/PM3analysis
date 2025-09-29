@@ -77,7 +77,39 @@ class PM3AIAnalyzer:
         except Exception as e:
             self.log(f"Command error: {str(e)}", "ERROR")
             return f"ERROR: {str(e)}"
-    
+
+    def _check_dump_success(self, output):
+        """Check if dump was successful based on PM3 output indicators"""
+        if not output or output in ["TIMEOUT", "ERROR"]:
+            return False
+
+        output_lower = output.lower()
+
+        # Check for MIFARE Ultralight dump success indicators
+        mfu_indicators = [
+            "mfu dump file information",
+            "reading tag memory",
+            "block#",
+            "version....."
+        ]
+
+        # Check for MIFARE Classic dump success indicators
+        mfc_indicators = [
+            "dumping complete",
+            "dump file saved",
+            "blocks dumped"
+        ]
+
+        # Check for general success indicators
+        general_indicators = [
+            "dump successful",
+            "saved to file"
+        ]
+
+        all_indicators = mfu_indicators + mfc_indicators + general_indicators
+
+        return any(indicator in output_lower for indicator in all_indicators)
+
     def check_pm3_connection(self):
         """Check PM3 connection and hardware status"""
         self.log("Checking PM3 connection...")
@@ -328,7 +360,7 @@ class PM3AIAnalyzer:
             dump_result = self.run_pm3_command("hf mf dump")
             analysis_results["dump"] = {
                 "output": dump_result,
-                "success": "dump completed" in dump_result.lower()
+                "success": self._check_dump_success(dump_result)
             }
         
         return analysis_results
@@ -353,7 +385,7 @@ class PM3AIAnalyzer:
         dump_no_pwd = self.run_pm3_command("hf mfu dump")
         analysis_results["attacks"]["no_password"] = {
             "output": dump_no_pwd,
-            "success": "dump completed" in dump_no_pwd.lower()
+            "success": self._check_dump_success(dump_no_pwd)
         }
         
         if analysis_results["attacks"]["no_password"]["success"]:
@@ -369,7 +401,7 @@ class PM3AIAnalyzer:
             pwd_result = self.run_pm3_command(f"hf mfu dump -k {pwd}")
             analysis_results["attacks"][f"password_{pwd}"] = {
                 "output": pwd_result,
-                "success": "dump completed" in pwd_result.lower()
+                "success": self._check_dump_success(pwd_result)
             }
             
             if analysis_results["attacks"][f"password_{pwd}"]["success"]:
